@@ -5,9 +5,9 @@ import {
   ImageBackground,
   Button,
   TouchableOpacity,
-  Touchable,
 } from 'react-native';
 import styles from './styles';
+
 const basicOptions = props => {
   let rows = [];
   let nums = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '.', '=']];
@@ -15,7 +15,10 @@ const basicOptions = props => {
     let rowx = [];
     for (let j = 0; j < 3; j++) {
       rowx.push (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => <Output val="hello" />}
+        >
           <Text style={styles.txt}>{nums[i][j]}</Text>
         </TouchableOpacity>
       );
@@ -24,7 +27,7 @@ const basicOptions = props => {
   }
 
   let oper = [];
-  let ok = ['Back', '/', 'x', '-', '+'];
+  let ok = ['<x', '/', 'x', '-', '+'];
   for (let i = 0; i < 5; i++) {
     oper.push (
       <View style={styles.operations}>
@@ -39,7 +42,7 @@ const basicOptions = props => {
       <View style={styles.numbers}>
         {rows}
       </View>
-      <View style={styles.operations}>
+      <View style={styles.operationsX}>
         {oper}
       </View>
     </View>

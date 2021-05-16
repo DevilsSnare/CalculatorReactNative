@@ -24,7 +24,7 @@ const styles = StyleSheet.create ({
     fontSize: 25,
     color: 'white',
   },
-  operations: {
+  operationsX: {
     flex: 0.25,
     flexDirection: 'column',
     justifyContent: 'space-around',

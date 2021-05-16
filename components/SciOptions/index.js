@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ImageBackground} from 'react-native';
-import styles from './styles';
-const basicOptions = props => {};
-export default basicOptions;
+import {View, Text} from 'react-native';
+
+const SciOptions = props => {};
+export default SciOptions;
