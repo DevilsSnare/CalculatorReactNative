@@ -1,5 +1,5 @@
 import {StatusBar} from 'expo-status-bar';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,25 @@ import {
 } from 'react-native';
 
 export default function App () {
+  const calculate = val => {
+    return 99;
+  };
+  let [output, setOutput] = useState ('');
+  const write = val => {
+    if (val == 'DEL') {
+      output = output.slice (0, -1);
+      setOutput (output);
+      return;
+    }
+    if (val == '=') {
+      output = calculate (output);
+      setOutput (output);
+      return;
+    }
+    output = output + val;
+    setOutput (output);
+  };
+
   let rows = [];
   let nums = [[7, 8, 9], [4, 5, 6], [1, 2, 3], [0, '.', '=']];
   for (let i = 0; i < 4; i++) {
@@ -25,22 +44,22 @@ export default function App () {
     }
     rows.push (<View style={styles.row}>{rowx}</View>);
   }
-
   let oper = [];
-  let ok = ['<x', '/', 'x', '-', '+'];
+  let ok = ['DEL', '/', 'x', '-', '+'];
   for (let i = 0; i < 5; i++) {
     oper.push (
       <View style={styles.operations}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => write (ok[i])}>
           <Text style={styles.txt}>{ok[i]}</Text>
         </TouchableOpacity>
       </View>
     );
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.output}>
-        <Text style={styles.outtxt}>Output</Text>
+        <Text style={styles.outtxt}>{output}</Text>
       </View>
       <View style={styles.operations}>
         <View style={styles.basicOptions}>
