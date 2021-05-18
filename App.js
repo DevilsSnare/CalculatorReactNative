@@ -23,11 +23,6 @@ export default function App () {
   let [output, setOutput] = useState ('');
   let [opOut, setOpOut] = useState ('');
   const write = val => {
-    if (val == '*') {
-      opOut = opOut + 'x';
-      setOpOut (opOut);
-      return;
-    }
     if (val == 'DEL') {
       opOut = opOut.slice (0, -1);
       setOpOut (opOut);
